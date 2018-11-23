@@ -1,0 +1,11 @@
+.multiline-ellipsis {
+	display: block;
+    display: -webkit-box;
+	max-width: 100%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+wp_trim_words( get_the_excerpt(), 60, '...'); ?>

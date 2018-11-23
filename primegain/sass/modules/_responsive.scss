@@ -1,0 +1,123 @@
+@media only screen and (min-width:1400px) {
+    .containerhome .bannersection .swiper-container {
+        height: 800px;
+    }
+    .containerhome .bannersection .swiper-btn-prev{
+        top: 37%;
+    }
+    .containerhome .bannersection .swiper-btn-next{
+        bottom: 37%;
+    }
+}
+@media only screen and (max-width:1400px) {
+    .containerhome .bannersection .swiper-container {
+        height: 800px;
+    }
+}
+@media only screen and (max-width:1200px) {
+    .header_block .headbottom .row .actionbtns{
+        display: flex;
+    }
+    .header_block .headbottom .row .actionbtns li a{
+        width: 123px;
+    }
+    .blogsecttwo .container{
+        padding: 0 30px;
+    }
+}
+@media only screen and (max-width:991px) {
+   .md-hidden{
+       display: none;
+   }
+   .containerhome .bannersection .swiper-container {
+    height: 625px;
+  }
+  .containerhome .bannersection .swiper-btn-prev{
+    top: 31%;
+}
+.containerhome .bannersection .swiper-btn-next{
+    bottom: 30%;
+}
+.header_block .headtop{
+    display: none;
+}
+.whyclient .bluefade{
+    position: initial;
+    width: 100%;
+}
+.whyclient .swiper-slide{
+    flex-direction: column;
+}
+.whyclient .bluefade{
+    padding: 5% 3% 78px 3%;
+}
+.whyclient .arowpos{
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+}
+@media only screen and (max-width:768px) {
+    .containerhome .bannersection .bannertab .alignmiddle .horizontaltab  h2{
+        color: #000;
+        font-size: 2em;
+    }
+    .containerhome .bannersection .swiper-pagination-bullets{
+        display: none;
+    }
+    .containerhome .bannersection .swiper-btn-next {
+        bottom: 53%;
+    }
+    .containerhome .howitworks .container .horizontaltabtwo .resp-tab-content .btncontainer{
+        margin-bottom: 40px;
+    }
+    .site-footer .footsectthree h3{
+        text-align: center;
+    }
+    .faqsectone .horizontaltab .resp-tabs-list{
+        display: none;
+    }
+    .faqsectone .resp-tab-content h2{
+        padding: 10px 27px 10px 0;
+    }
+    .faqsectone .resp-tab-content ul{
+        margin-bottom: 20px;
+    }
+    .guidesectone .horizontaltabtwo .resp-tabs-list{
+        display: none;
+    }
+    .guidesectone .resp-tabs-container{
+        margin-top: 20px;
+    }
+    .blogsectionrightone .textsect{
+        margin-left: 0;
+        margin-right: 0;
+        
+    }
+}
+@media only screen and (max-width:600px) {
+    .site-footer {
+        text-align: center;
+    }
+    
+
+}
+@media only screen and (max-width:480px) {
+    body {
+        font-size: 8px;
+    }
+    .header_block .headtop{
+        display: none;
+    }
+    .open-menu .main-navigation .header-menu {
+        width: 100%;
+    }
+    .containerhome .bannersection .swiper-container {
+        height: 600px;
+      }
+      .containerhome .latestblog .container .sectblogin .secttext {
+        padding: 41px 10%;
+        font-size: 7px;
+      }
+
+}

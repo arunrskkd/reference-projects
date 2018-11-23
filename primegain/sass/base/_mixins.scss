@@ -1,0 +1,275 @@
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin grayscale_element($value) {
+    -webkit-filter: #{"grayscale(#{$value})"};
+    -moz-filter: #{"grayscale(#{$value})"};
+    filter:#{"grayscale(#{$value})"};
+}
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+@mixin x-appearance ($value) {
+	-webkit-appearance: $value;
+	   -moz-appearance: $value;
+	        appearance: $value;
+}
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+// =============================================
+// Mixin - Breakpoint
+// =============================================
+
+$mq-support: true !default;
+$mq-fixed-value: 1024px !default;
+
+@mixin bp($feature, $value) {
+    // Set global device param
+    $media: only screen;
+
+    // Media queries supported
+    @if $mq-support == true {
+
+        @media #{$media} and ($feature: $value) {
+            @content;
+        }
+
+        // Media queries not supported
+    } @else {
+
+        @if $feature == 'min-width' {
+            @if $value <= $mq-fixed-value {
+                @content;
+            }
+        } @else if $feature == 'max-width' {
+            @if $value >= $mq-fixed-value {
+                @content;
+            }
+        }
+
+    }
+}
+
+@mixin breakpoint($point) {
+  @if $point == medium {
+    @media (min-width:767px) { @content; }
+  }
+  @else if $point == small {
+    @media (max-width: 640px) { @content; }
+  }
+  @else if $point == x-small {
+    @media (max-width: 500px)  { @content; }
+  }
+}
+
+
+@mixin loadingOverlay($opacity: 0.8) {
+    &:before,
+    &:after {
+        content:'';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        display: none;
+    }
+
+    &:before {
+        background-color: white;
+        opacity: $opacity;
+        z-index:2;
+    }
+
+    &:after {
+        background-image: url('../images/opc-ajax-loader.gif');
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index:3;
+    }
+
+    &.loading {
+        position: relative;
+
+        &:before,
+        &:after {
+            display: block;
+        }
+    }
+}
+@mixin not-selectable {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+// =============================================
+// Mixin - Triangle
+// =============================================
+
+@mixin triangle($direction: up, $size: 5px, $color: #000000) {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    display: block;
+
+    @if $direction == up {
+        border-right: $size solid transparent;
+        border-left: $size solid transparent;
+        border-bottom: $size solid $color;
+        border-top: none;
+    }
+
+    @if $direction == down {
+        border-right: $size solid transparent;
+        border-left: $size solid transparent;
+        border-top: $size solid $color;
+        border-bottom: none;
+    }
+
+    @if $direction == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        border-right: none;
+    }
+
+    @if $direction == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        border-left: none;
+    }
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+// =============================================
+// Mixin - Typography
+// =============================================
+
+@mixin h1 {
+    margin: 0;
+    margin-bottom: 0.7em;
+    color: $heading_color;
+    font-family: $heading_font;
+    font-size: 3em;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.2;
+    text-rendering: optimizeLegibility;
+}
+
+@mixin h2 {
+    margin: 0;
+    margin-bottom: 0.5em;
+    color: #5c5c5c;
+    font-family: $heading_font;
+    font-size: 2em;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 50px;
+    text-rendering: optimizeLegibility;
+}
+
+@mixin h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: $heading_color;
+    font-family: $heading_font;
+    font-size: 1.6em;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeSpeed;
+}
+
+@mixin h4 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: $heading_color;
+    font-family: $heading_font;
+    font-size: 1.4em;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeSpeed;
+}
+
+@mixin h5 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: $heading_color;
+    font-family: $heading_font;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeSpeed;
+}
+
+@mixin h6 {
+    margin: 0;
+    margin-bottom: 5px;
+    color: $heading_color;
+    font-family: $heading_font;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeSpeed;
+}

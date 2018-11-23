@@ -1,0 +1,305 @@
+/* HTML5 dafault  */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+	display: block;
+}
+audio, canvas, video {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+audio:not([controls]) {
+	display: none;
+}
+[hidden] {
+	display: none;
+}
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html {
+}
+html, button, input, select, textarea {
+	color: $primary_color;
+}
+body {
+	margin: 0;
+	font-size: 16px;
+	font-family:$primary_font;
+	overflow-x: hidden;
+	background: $white_color; /* Fallback for when there is no custom background color defined. */
+}
+::-moz-selection {
+	background: $blue_color;
+	color: $white_color;
+	text-shadow: none;
+}
+::selection {
+	background: $blue_color;
+	color: $white_color;
+	text-shadow: none;
+}
+
+a {
+	color:$link_color;
+	outline: none;
+	text-decoration:none;
+	&:visited {
+		/* color: rgba($link_color, 0.8); */
+		text-decoration: underline
+	}
+	&:hover,
+	 {
+		color: rgba($hover-color, 0.8);
+	}
+	&:focus {
+		outline: thin dotted;
+	}
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}
+abbr[title] {border-bottom: 1px dotted;}
+b, strong {font-weight: bold;}
+blockquote, q {
+	quotes: "" "";
+	margin: 1em 40px;
+	&:before,
+	&:after {
+		content: "";
+	}
+	background:lighten($black_color, 95%);
+	border-left:10px solid darken($red_color, 40%);
+	box-shadow: 1px 1px 1px rgba($black_color,0.3);
+	padding:1em;
+}
+dfn {
+	font-style: italic;
+}
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	margin: 1em 0;
+	padding: 0;
+	background-color: $heading_color;
+}
+ins {
+	background: none;
+	color: $link_color;
+	text-decoration: underline;
+}
+del{
+	background: none;
+	color: $red_color;
+	text-decoration: line-through;	
+}
+mark {
+	background: $yellow_color;
+	color: $black_color;
+	font-style: italic;
+	font-weight: bold;
+}
+pre, code, kbd, samp {
+}
+pre {
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+small {
+	font-size: 85%;
+}
+big {
+	font-size: 125%;
+}
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin: 0 1.5em 1.5em;
+}
+nav{
+	ul,ol{
+		list-style: none;
+		list-style-image: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+	vertical-align: middle;
+	max-width: 100%;
+	height: auto; 
+}
+svg:not(:root) {
+	overflow: hidden;
+}
+figure {
+	margin: 0;
+}
+form {
+	margin: 0;
+}
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+label {
+	cursor: pointer;
+}
+legend {
+	border: 0;
+	*margin-left: -7px;
+	padding: 0;
+	white-space: normal;
+}
+input, select, textarea {
+	font-size: 100%;
+	margin: 0;
+	vertical-align: baseline;
+	*vertical-align: middle;
+	border: 1px solid $border-color;
+	padding: 3px;
+	&:focus {
+		color: rgba($primary_color, 0.8);
+	}
+}
+
+button[disabled], input[disabled] {
+	cursor: default;
+}
+input[type="checkbox"], input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+	*width: 13px;
+	*height: 13px;
+}
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	cursor: pointer;
+	-webkit-appearance: button;
+	*overflow: visible;
+	border: 1px solid;
+	border-color: $button_border;
+	border-radius: 3px;
+	background: $button_background;
+	color: rgba($white_color, 1);
+	@include font-size(1);
+	line-height: 1;
+	padding: .6em 1em .4em;
+	text-shadow: 0 1px 0 rgba($black_color, 0.8);
+
+	&:hover {
+		opacity: 0.8;
+	}
+
+	&:active,
+	&:focus {
+		border-color: rgba($button_background, 0.5);
+		opacity: 0.8;
+	}
+}
+
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+	resize: vertical;
+	width:100%;
+}
+input:valid, textarea:valid {
+}
+input:invalid, textarea:invalid {
+	background-color: rgba($red_color, 0.3);
+}
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0 0 1.5em;
+	width: 100%;
+	background: $table_bgcolor;
+}
+td {
+	vertical-align: top;
+}
+th {background: $th_bgcolor;}
+th,td {padding: 0.5em;border: 1px solid $table_bordercolor;}
+.chromeframe {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: black;
+	padding: 0.2em 0;
+}
+ul,ol {
+	margin: 0 0 1em 1em;
+	padding: 0;
+}
+ul {
+	list-style: disc;
+}
+ol {
+	list-style: decimal;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	margin:0;
+	padding:0;
+	font-weight: normal;
+	font-family: $heading_font;
+}
+p {font-size: 16px; margin:0;padding:0;font-weight: normal;line-height:23px; margin-bottom: 15px }
+h1 {@include h1;}
+h2 {@include h2;}
+h3 {@include h3;}
+h4 {@include h4;}
+h5 {@include h5;}
+h6 {@include h6;}
+.container{width:100%;padding:0 $grid_gap/2;max-width:$container-width;margin:0 auto;}
+.full-container{width:100%;max-width:100%;padding:0 $grid_gap/2;}
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	*zoom: 1;
+}

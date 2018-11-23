@@ -1,0 +1,17 @@
+ require_once( 'functions/meta-products.php' );
+ if( ! function_exists( 'muffin_content' ) )
+{
+    function muffin_content( $attr, $content = null )
+    {
+        extract(shortcode_atts(array(
+            'id'    => '',
+        ), $attr));
+        
+        $output = "";
+        if($id > 0)
+            $output = mfn_builder_print( $attr['id'] )."\n";
+
+        return $output;
+    }
+}
+add_shortcode( 'muffincontent', 'muffin_content' );

@@ -1,0 +1,23 @@
+/*!
+Theme Name: Acodez IT Solutions
+Theme URI: http://acodez.in
+Author: Acodez IT Solutions
+Author URI: http://acodez.in
+Description: Hey, checking if this is a pre-built theme? Nope! It is a custom template built by the awesome crew at Acodez, India
+Version: 1.0.0
+Text Domain: acodez-themes
+*/
+
+// ----------------------------------------------------------------------
+// Base
+//
+@import "base/variables";
+@import "base/mixins";
+@import "base/default";
+@import "base/grid";
+
+// ----------------------------------------------------------------------
+// Modules
+// ----------------------------------------------------------------------
+@import "modules/style";
+

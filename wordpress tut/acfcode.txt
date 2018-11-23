@@ -1,0 +1,48 @@
+Acf hack after completion project  hide acf.
+
+
+inc/acf   -make folder
+
+
+
+/*-------------------------- ACF Repeater -----------------------------*/
+// 1.Customize ACF path
+add_filter('acf/settings/path', 'my_acf_settings_path');
+function my_acf_settings_path( $path ) {
+    // update path
+    $path = get_stylesheet_directory() . '/inc/acf/';
+    // return
+    return $path;
+}
+// 2.Customize ACF dir
+add_filter('acf/settings/dir', 'my_acf_settings_dir'); 
+function my_acf_settings_dir( $dir ) {
+    // update path
+    $dir = get_stylesheet_directory_uri() . '/inc/acf/';
+    // return
+    return $dir;
+}
+// 3.Hide ACF field group menu item
+//add_filter('acf/settings/show_admin', '__return_false');
+// 4.Include ACF
+include_once(get_stylesheet_directory() . '/inc/acf/acf.php');
+// acf options page
+if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+        'page_title'  => 'Website General Info',
+        'menu_title'  => 'General',
+        'menu_slug'   => 'theme-general-settings',
+        'capability'  => 'edit_posts',
+        'redirect'    => false
+        ));
+    // acf_add_options_sub_page(array(
+    //     'page_title'  => 'Social Media',
+    //     'menu_title'  => 'Social Media',
+    //     'parent_slug' => 'theme-general-settings',
+    //     ));
+    acf_add_options_sub_page(array(
+        'page_title'  => 'Whitelist',
+        'menu_title'  => 'Whitelist',
+        'parent_slug' => 'theme-general-settings',
+        ));
+}

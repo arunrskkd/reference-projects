@@ -1,0 +1,130 @@
+
+
+
+adding custom posts  -- in functions.php add folowing code
+function theme_posttypetwo() {
+	register_post_type('newsupdates', array('label' => 'newsupdates',
+		'description' => '',
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'query_var' => true, 
+		'exclude_from_search' => false,
+		'supports' => array('title', 'editor','thumbnail'),
+		'menu_icon'   => 'dashicons-format-chat',		
+		'labels' => array(
+			'name' => 'newsupdates',
+			'singular_name' => 'newsupdate',
+			'menu_name' => 'newsupdates',
+			'add_new' => 'Add New newsupdates',
+			'add_new_item' => 'Add New newsupdates',
+			'edit' => 'Edit newsupdates',
+			'edit_item' => 'Edit newsupdates',
+			'new_item' => 'New newsupdates',
+			'view' => 'View newsupdates',
+			'view_item' => 'View newsupdates',
+			'search_items' => 'Search newsupdatess',
+			'not_found' => 'No newsupdatess Found',
+			'not_found_in_trash' => 'No newsupdatess Found in Trash',
+			'parent' => 'Parent newsupdates',
+	)));
+	register_taxonomy(
+		'newsupdates-category',
+		'newsupdates',
+		array(
+			'label' => __( 'Categories' ),
+			'hierarchical' => true,
+			'show_admin_column' => true
+		)
+	);
+}
+add_action('init', 'theme_posttypetwo');
+
+
+in template paste this
+<?php 
+// WP_Query arguments
+$args = array (
+'post_type'              => 'testimonial',    
+'order'                  => 'DESC',
+'orderby'                => 'date',
+);
+
+// The Query
+$query = new WP_Query( $args );
+
+// The Loop
+if ( $query->have_posts() ) {
+    while ( $query->have_posts() ) {
+        $query->the_post();
+
+?>
+<article>
+    <header>
+      
+        <h3><a href="<?php echo get_permalink($query->post->ID ); ?>"><?php echo $query->post->post_title;?></a></h3>
+
+    <?php
+   
+
+    }
+} else {
+   echo "no posts";
+}
+
+?>
+
+---------------------------------------------------------------------------------------------
+
+
+
+adding menu
+1)adding menu locations
+in functions.php
+
+/*------ Register Navigation Menu -------*/
+register_nav_menus( array(
+	'header_menu' => 'Header Menu',
+    'footer_menu'=> 'Footer Menu',
+    'sidebar_menu'=> 'sidebar Menu'
+	)
+);
+
+2)add menus in dashbord ->apperarence ->menu
+
+3)displaying menu on template
+
+ <?php wp_nav_menu( array( 'container' => '', 'theme_location' => 'header_menu' ) ); ?>
+
+displays menu in ul>li format
+
+----------------------------------------------------------------------------------------------------
+
+
+creating cutom widget area
+
+display on dashboard widgets
+function smallenvelop_widgets_init() {
+    register_sidebar( array(
+        'name' => __( 'Header Sidebar', 'smallenvelop' ),
+        'id' => 'header-sidebar',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ) );
+}
+add_action( 'widgets_init', 'smallenvelop_widgets_init' );
+
+
+displaying on template
+<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('header-sidebar') ) : 
+ 
+endif; ?>
+
+
+---------------------------------------------------------------------------------------------------
+
+
